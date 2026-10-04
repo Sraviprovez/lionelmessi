@@ -63,9 +63,9 @@ dev = [
 lionelmessi = "lionelmessi.cli:app"
 
 [project.urls]
-Homepage = "https://github.com/lionelmessi/lionelmessi"
-Repository = "https://github.com/lionelmessi/lionelmessi"
-Issues = "https://github.com/lionelmessi/lionelmessi/issues"
+Homepage = "https://github.com/Sriraviprovez/lionelmessi"
+Repository = "https://github.com/Sriraviprovez/lionelmessi"
+Issues = "https://github.com/Sriraviprovez/lionelmessi/issues"
 
 [tool.hatch.build.targets.wheel]
 packages = ["src/lionelmessi"]

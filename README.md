@@ -1,6 +1,6 @@
 # lionelmessi
 
-[![CI](https://github.com/lionelmessi/lionelmessi/actions/workflows/ci.yml/badge.svg)](https://github.com/lionelmessi/lionelmessi/actions/workflows/ci.yml)
+[![CI](https://github.com/Sriraviprovez/lionelmessi/actions/workflows/ci.yml/badge.svg)](https://github.com/Sriraviprovez/lionelmessi/actions/workflows/ci.yml)
 [![PyPI](https://img.shields.io/pypi/v/lionelmessi.svg)](https://pypi.org/project/lionelmessi/)
 [![Python](https://img.shields.io/pypi/pyversions/lionelmessi.svg)](https://pypi.org/project/lionelmessi/)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
@@ -82,7 +82,7 @@ licence and user agreement before using the outputs.
   title  = {lionelmessi: Scientific football analytics for Lionel Messi's career},
   author = {lionelmessi contributors},
   year   = {2026},
-  url    = {https://github.com/lionelmessi/lionelmessi}
+  url    = {https://github.com/Sriraviprovez/lionelmessi}
 }
 ```
 

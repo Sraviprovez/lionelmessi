@@ -5,8 +5,8 @@ type: software
 authors:
   - name: "lionelmessi contributors"
 license: MIT
-repository-code: "https://github.com/lionelmessi/lionelmessi"
-url: "https://github.com/lionelmessi/lionelmessi"
+repository-code: "https://github.com/Sriraviprovez/lionelmessi"
+url: "https://github.com/Sriraviprovez/lionelmessi"
 version: "0.1.0"
 date-released: "2026-10-04"
 keywords:

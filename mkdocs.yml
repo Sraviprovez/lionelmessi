@@ -1,6 +1,6 @@
 site_name: lionelmessi
 site_description: Scientific football analytics for Lionel Messi's career.
-repo_url: https://github.com/lionelmessi/lionelmessi
+repo_url: https://github.com/Sriraviprovez/lionelmessi
 theme:
   name: material
   features:
