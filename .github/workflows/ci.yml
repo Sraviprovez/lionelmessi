@@ -22,22 +22,24 @@ jobs:
     steps:
       - uses: actions/checkout@v4
 
-      - name: Install uv
-        uses: astral-sh/setup-uv@v5
+      - name: Set up Python ${{ matrix.python-version }}
+        uses: actions/setup-python@v5
         with:
-          enable-cache: true
-
-      - name: Set up Python
-        run: uv python install ${{ matrix.python-version }}
+          python-version: ${{ matrix.python-version }}
+          cache: pip
 
       - name: Install dependencies
-        run: uv pip install --system -e ".[dev,viz,ml]"
+        run: |
+          python -m pip install --upgrade pip
+          pip install -e ".[dev,viz,ml]"
 
       - name: Lint (ruff)
-        run: ruff check src tests
+        run: |
+          ruff check src tests
+          ruff format --check src tests
 
       - name: Type check (mypy strict)
-        run: mypy
+        run: mypy src/lionelmessi
 
       - name: Tests (pytest + coverage)
         run: pytest --cov=lionelmessi --cov-report=xml --cov-report=term-missing
