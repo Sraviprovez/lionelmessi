@@ -207,8 +207,8 @@ def plot_xt_surface(
         cmap=cmap,
         aspect="auto",
         alpha=0.85,
-        vmin=float(surface.min()),
-        vmax=float(surface.max()),
+        vmin=float(np.min(surface)),
+        vmax=float(np.max(surface)),
     )
     ax.figure.colorbar(image, ax=ax, fraction=0.036, pad=0.02, label="Expected threat")
     if annotate:

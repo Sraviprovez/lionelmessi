@@ -10,6 +10,7 @@ from __future__ import annotations
 from typing import Any
 
 import numpy as np
+import numpy.typing as npt
 import polars as pl
 
 from lionelmessi import config
@@ -272,7 +273,7 @@ def pitch_zone_heatmap(
     zone: str = "thirds",
     bins: tuple[int, int] = (16, 12),
     player_id: int | None = MESSI_ID,
-) -> np.ndarray:
+) -> npt.NDArray[np.float64]:
     """Return a 2D histogram of Messi's touches over the pitch.
 
     Parameters

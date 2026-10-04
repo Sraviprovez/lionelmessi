@@ -14,6 +14,7 @@ from pathlib import Path
 from typing import TYPE_CHECKING, Any, overload
 
 import numpy as np
+import numpy.typing as npt
 import polars as pl
 
 from lionelmessi import config
@@ -24,9 +25,9 @@ if TYPE_CHECKING:  # pragma: no cover
 __all__ = ["ExpectedThreat", "ActionValueModel", "pitch_control_surface"]
 
 #: Array-like inputs accepted by the array form of :meth:`ExpectedThreat.fit`.
-Labels = Sequence[str] | np.ndarray
-FlagArray = Sequence[bool] | np.ndarray
-PointArray = Sequence[float] | np.ndarray
+Labels = Sequence[str] | npt.NDArray[np.str_]
+FlagArray = Sequence[bool] | npt.NDArray[np.bool_]
+PointArray = Sequence[float] | npt.NDArray[np.float64]
 
 #: One normalized observation: (start_x, start_y, kind, scored, end_x, end_y).
 _Observation = tuple[float, float, str, bool, float | None, float | None]
@@ -105,10 +106,10 @@ class ExpectedThreat:
 
     x_bins: int = 16
     y_bins: int = 12
-    p_shot: np.ndarray = field(default_factory=lambda: np.zeros(0))
-    p_goal: np.ndarray = field(default_factory=lambda: np.zeros(0))
-    transition: np.ndarray = field(default_factory=lambda: np.zeros((0, 0)))
-    values: np.ndarray = field(default_factory=lambda: np.zeros(0))
+    p_shot: npt.NDArray[np.float64] = field(default_factory=lambda: np.zeros(0))
+    p_goal: npt.NDArray[np.float64] = field(default_factory=lambda: np.zeros(0))
+    transition: npt.NDArray[np.float64] = field(default_factory=lambda: np.zeros((0, 0)))
+    values: npt.NDArray[np.float64] = field(default_factory=lambda: np.zeros(0))
     n_events: int = 0
 
     # ------------------------------------------------------------------ #
@@ -209,8 +210,8 @@ class ExpectedThreat:
         self.values = self._value_iteration(tol=tol, max_iter=max_iter)
         return self
 
-    def _value_iteration(self, *, tol: float, max_iter: int) -> np.ndarray:
-        values = np.zeros(self.n_cells)
+    def _value_iteration(self, *, tol: float, max_iter: int) -> npt.NDArray[np.float64]:
+        values: npt.NDArray[np.float64] = np.zeros(self.n_cells)
         p_move = 1.0 - self.p_shot
         for _ in range(max_iter):
             updated = self.p_shot * self.p_goal + p_move * (self.transition @ values)
@@ -224,7 +225,7 @@ class ExpectedThreat:
     # Access
     # ------------------------------------------------------------------ #
     @property
-    def xt_surface(self) -> np.ndarray:
+    def xt_surface(self) -> npt.NDArray[np.float64]:
         """Return the xT surface with shape ``(y_bins, x_bins)``."""
 
         grid = self.values.reshape(self.x_bins, self.y_bins)
@@ -299,7 +300,7 @@ class ActionValueModel:
         self._model: Any | None = None
 
     @staticmethod
-    def frame_features(events: pl.DataFrame) -> np.ndarray:
+    def frame_features(events: pl.DataFrame) -> npt.NDArray[np.float64]:
         """Build the numeric feature matrix used by the classifier."""
 
         rows = []
@@ -339,7 +340,7 @@ class ActionValueModel:
         self._model = model
         return self
 
-    def score(self, events: pl.DataFrame) -> np.ndarray:
+    def score(self, events: pl.DataFrame) -> npt.NDArray[np.float64]:
         """Return ``P(goal | state)`` for each gem in ``events``."""
 
         if self._model is None:
@@ -354,7 +355,7 @@ def pitch_control_surface(
     x_bins: int = 16,
     y_bins: int = 12,
     time_to_intercept: float = 0.7,
-) -> np.ndarray:
+) -> npt.NDArray[np.float64]:
     """A simple ball-relative pitch-control surface.
 
     Control at a cell decays with the time it would take the ball to travel
