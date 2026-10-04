@@ -1,0 +1,30 @@
+site_name: lionelmessi
+site_description: Scientific football analytics for Lionel Messi's career.
+repo_url: https://github.com/lionelmessi/lionelmessi
+theme:
+  name: material
+  features:
+    - navigation.sections
+    - content.code.copy
+  palette:
+    - scheme: slate
+      primary: indigo
+markdown_extensions:
+  - admonition
+  - pymdownx.superfences
+  - pymdownx.highlight
+plugins:
+  - search
+  - mkdocstrings:
+      handlers:
+        python:
+          options:
+            docstring_style: numpy
+            show_source: false
+nav:
+  - Home: index.md
+  - Quickstart: quickstart.md
+  - Data: data.md
+  - Models: models.md
+  - Visualizations: viz.md
+  - API: api.md

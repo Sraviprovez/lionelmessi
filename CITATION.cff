@@ -1,0 +1,27 @@
+cff-version: 1.2.0
+message: "If you use lionelmessi in your research, please cite it as below."
+title: "lionelmessi: Scientific football analytics for Lionel Messi's career"
+type: software
+authors:
+  - name: "lionelmessi contributors"
+license: MIT
+repository-code: "https://github.com/lionelmessi/lionelmessi"
+url: "https://github.com/lionelmessi/lionelmessi"
+version: "0.1.0"
+date-released: "2026-10-04"
+keywords:
+  - football
+  - soccer
+  - analytics
+  - expected-threat
+  - statsbomb
+abstract: >-
+  A scientific football analytics engine for Lionel Messi's career, ingesting
+  StatsBomb Open Data and providing Expected Threat, VAEP-style action values,
+  possession-chain analysis, and pitch-level visualizations.
+references:
+  - type: dataset
+    title: "StatsBomb Open Data"
+    authors:
+      - name: "StatsBomb"
+    url: "https://github.com/statsbomb/open-data"
