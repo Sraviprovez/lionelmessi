@@ -117,7 +117,9 @@ def _build_session() -> requests.Session:
     adapter = HTTPAdapter(max_retries=retry, pool_maxsize=config.MAX_WORKERS * 2)
     session.mount("https://", adapter)
     session.mount("http://", adapter)
-    session.headers.update({"User-Agent": "lionelmessi/0.1.0 (+https://github.com/Sraviprovez/lionelmessi)"})
+    session.headers.update(
+        {"User-Agent": "lionelmessi/0.1.0 (+https://github.com/Sraviprovez/lionelmessi)"}
+    )
     return session
 
 
